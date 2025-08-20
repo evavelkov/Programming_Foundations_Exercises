@@ -1,69 +1,63 @@
-# The get_word_dict function returns a dictionary containing
-# the words from line_list as keys, and their line numbers
-# as values.
-def get_word_dict(line_list):
-    # Create a line counter.
-    count = 0
-    
-    # Create a dictionary to hold the words.
-    word_dict = {}
-
-    # Step through the list of lines.
-    for e in line_list:
-        # Split the line into words.
-        words = e.split(' ')
-
-        # Step through the list of words.
-        for w in words:
-            # If the word is in the dictionary...
-            if w in word_dict:
-                # Update the existing element.
-                word_dict[w].add(count + 1)
-            else:
-                # Otherwise, store the word in the dictionary.
-                word_dict[w] = set([count + 1])
-
-        # Update the counter.
-        count += 1
-
-    # Return the dictionary.
-    return word_dict
-
-# The write_index_file function writes an index file containing the
-# elements of the word_dict dictionary.
-def write_index_file(word_dict):
-    # Open the file.
-    outputfile = open('index.txt', 'w')
-
-    # Write the entries from the dictionary.
-    for key in word_dict:
-        # Write the word.
-        outputfile.write(key + ': ')
-        # Write the line numbers.
-        for val in word_dict[key]:
-            outputfile.write(str(val) + ' ')
-        # Write a newline character.
-        outputfile.write('\n')
-
-    # Close the file.
-    outputfile.close()
-    
-def main():
-    # Open the file.
-    with open('Kennedy.txt', 'r') as inputfile:
-        # Read the file's contents into a list.
-        line_list = inputfile.readlines()
-
-    # Strip the newline from each list element.
-    for i in range(len(line_list)):
-        line_list[i] = line_list[i].rstrip('\n')
-
-    # Get a dictionary holding the words and their line numbers.
-    word_dict = get_word_dict(line_list)
-
-    # Write the index file.
-    write_index_file(word_dict)
-    
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise 9-10: Text Index Generator
+#
+# Task: Write a program that creates an index of words and their line numbers from a text file.
+#
+# Requirements:
+# 1. Create a main function that handles file reading and index creation
+# 2. Create a get_word_dict function that builds word-to-line-numbers mapping
+# 3. Create a write_index_file function that writes the index to a file
+# 4. Read text from 'Kennedy.txt' file
+# 5. Generate index showing each word and its line numbers
+# 6. Write index to 'index.txt' file
+#
+# Functions:
+# - main(): handles file operations and calls helper functions
+# - get_word_dict(line_list): creates dictionary mapping words to line numbers
+# - write_index_file(word_dict): writes index to output file
+#
+# Logic:
+# - Open 'Kennedy.txt' file and read all lines into a list
+# - Strip newline characters from each line
+# - Call get_word_dict() to create word-to-line-numbers mapping
+# - Call write_index_file() to write index to file
+# - In get_word_dict():
+#   - Initialize empty dictionary and line counter
+#   - Process each line in the list
+#   - Split line into words
+#   - For each word: add to dictionary with line number
+#   - Use sets to store multiple line numbers for same word
+# - In write_index_file():
+#   - Open 'index.txt' for writing
+#   - Write each word followed by its line numbers
+#   - Close the file
+#
+# File Operations:
+# - open('Kennedy.txt', 'r') - open input file for reading
+# - open('index.txt', 'w') - open output file for writing
+# - file.readlines() - read all lines into list
+# - file.write(text) - write text to file
+# - file.close() - close file
+# - with statement - automatic file closing
+#
+# String Operations:
+# - line.rstrip('\n') - remove newline character
+# - line.split(' ') - split line into words
+#
+# Dictionary Operations:
+# - dictionary[key] = value - add key-value pair
+# - key in dictionary - check if key exists
+# - dictionary[key].add(value) - add value to set
+# - set([value]) - create set with single value
+#
+# Example:
+# (Creates index.txt with format:)
+# word1: 1 3 5
+# word2: 2 4
+# word3: 1 2 6
+#
+# Note: 
+# - Program reads entire text file
+# - Creates comprehensive word index
+# - Uses sets to store multiple line numbers per word
+# - Writes formatted index to output file
+# - Handles words that appear multiple times

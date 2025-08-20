@@ -1,51 +1,45 @@
-# Programming Exercise 8-5
-
-def main():
-    # Local variables
-    digit_list = ['2','3','4','5','6','7','8','9']
-    alpha_phone_number = ''
-    num_phone_number = ''
-
-    # Get the string as input from the user.
-    alpha_phone_number = input('Enter the telephone '
-                               'number in the format'
-                               ' XXX-XXX-XXXX: ')
-
-    # Step through the string finding the index number
-    # from the digit list for each character. Build the
-    # string, and display the digits.
-    for ch in alpha_phone_number:
-        # Determine if the character is a letter.
-        if ch.isalpha():
-            # If so, convert the character to uppercase.
-            ch = ch.upper()
-            # Determine the index number for the character
-            # from the digit list.
-            if ch == 'A' or ch == 'B' or ch == 'C':
-                index = 0
-            elif ch == 'D' or ch == 'E' or ch == 'F':
-                index = 1
-            elif ch == 'G' or ch == 'H' or ch == 'I':
-                index = 2
-            elif ch == 'J' or ch == 'K' or ch == 'L':
-                index = 3
-            elif ch == 'M' or ch == 'N' or ch == 'O':
-                index = 4
-            elif ch == 'P' or ch == 'Q' or ch == 'R' or ch == 'S':
-                index = 5
-            elif ch == 'T' or ch == 'U' or ch == 'V':
-                index = 6
-            elif ch == 'W' or ch == 'X' or ch == 'Y' or ch == 'Z':
-                index = 7
-            # Set the character to a digit from the list.
-            ch = digit_list[index]
-            
-        # Concatenate the digit to the string.
-        num_phone_number = num_phone_number + ch
-
-    # Display the phone number's digits.
-    print(f'The phone number is {num_phone_number}')
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise 8-5: Telephone Number Converter
+#
+# Task: Write a program that converts alphabetic phone numbers to numeric format.
+#
+# Requirements:
+# 1. Create a main function that handles user input and phone number conversion
+# 2. Create a list of digit mappings for letters
+# 3. Get alphabetic phone number from user input (XXX-XXX-XXXX format)
+# 4. Convert letters to corresponding digits
+# 5. Display the numeric phone number
+#
+# Functions:
+# - main(): handles user input and phone number conversion
+#
+# Logic:
+# - Create list of digits: ['2','3','4','5','6','7','8','9']
+# - Get alphabetic phone number from user input
+# - Use for loop to iterate through each character in phone number
+# - Check if character is a letter using isalpha()
+# - If letter, convert to uppercase and determine digit mapping
+# - Use if-elif chain to map letter groups to digits
+# - Replace letter with corresponding digit
+# - Keep non-letter characters unchanged
+# - Build numeric phone number string
+# - Display the final numeric phone number
+#
+# Letter to Digit Mapping:
+# - ABC -> 2, DEF -> 3, GHI -> 4, JKL -> 5
+# - MNO -> 6, PQRS -> 7, TUV -> 8, WXYZ -> 9
+#
+# String Operations:
+# - for ch in string: - iterate through characters
+# - ch.isalpha() - check if character is a letter
+# - ch.upper() - convert to uppercase
+# - string concatenation with '+'
+#
+# Example:
+# Enter the telephone number in the format XXX-XXX-XXXX: 555-GET-FOOD
+# The phone number is 555-438-3663
+#
+# Note: 
+# - Program handles standard telephone keypad mapping
+# - Preserves hyphens and other non-letter characters
+# - Converts letters to uppercase for processing
+# - Maintains XXX-XXX-XXXX format in output

@@ -1,37 +1,40 @@
-# Programming Exercise 8-2
-
-def main():
-    # Get a string of numbers as input from the user.
-    number_string = input('Enter a sequence of digits '
-                          'with nothing separating them: ')
-
-    # Call string_total method, and store the total.
-    total = string_total(number_string)
-
-    # Display the total.
-    print(f'The total of the digits in the '
-          f'string you entered is {total}')
-
-
-# The string_total method receives a string and returns
-# the total of all the digits contained in the string.
-# The method assumes that the string does not contain
-# non-digit characters
-def string_total(string):
-    # Local variables
-    total = 0
-    number = 0
-
-    # Step through each character in the string.
-    for i in range(len(string)):
-        # Convert the character to an integer.
-        number = int(string[i])
-        # Add the value to the running total.
-        total += number
-
-    # Return the total.
-    return total
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise 8-2: String Digit Sum Calculator
+#
+# Task: Write a program that calculates the sum of all digits in a string.
+#
+# Requirements:
+# 1. Create a main function that handles user input and calls calculation function
+# 2. Create a string_total function that calculates sum of digits in a string
+# 3. Get a string of digits from user input (no separators)
+# 4. Calculate the total of all digits in the string
+# 5. Display the result
+#
+# Functions:
+# - main(): handles user input and displays results
+# - string_total(string): calculates sum of digits in string
+#
+# Logic:
+# - Get string of digits from user input
+# - Call string_total function with the string
+# - Display the total
+# - In string_total function:
+#   - Initialize total to 0
+#   - Use for loop to iterate through each character in string
+#   - Convert each character to integer using int()
+#   - Add each digit to running total
+#   - Return the total
+#
+# String Operations:
+# - len(string) - get string length
+# - string[i] - access character at index i
+# - int(char) - convert character to integer
+#
+# Example:
+# Enter a sequence of digits with nothing separating them: 12345
+# The total of the digits in the string you entered is 15
+#
+# Note: 
+# - Program assumes string contains only digit characters
+# - Uses string indexing to access each character
+# - Converts each character to integer for calculation
+# - Handles strings of any length

@@ -1,75 +1,62 @@
-# Named constants
-LOTTERY_NUMBERS = 69
-POWERBALL_NUMBERS = 26
-
-def main():
-    # Get a list of all the lottery numbers.
-    lottery_list = get_numbers()
-        
-    # Create lists to hold each number's frequency. The lists
-    # are initialized with each element set to 0.
-    reg_frequency = [0] * (LOTTERY_NUMBERS + 1)
-    pb_frequency = [0] * (POWERBALL_NUMBERS + 1)
-
-    # Get the frequency of each regular number.
-    for i in range(len(lottery_list[0])):
-        # Get the next number in the list.
-        num = lottery_list[0][i]
-
-        # Increment that number's frequency.
-        reg_frequency[num] += 1
-
-    # Get the frequency of each PowerBall number.
-    for i in range(len(lottery_list[1])):
-        # Get the next number in the list.
-        num = lottery_list[1][i]
-
-        # Increment that number's frequency.
-        pb_frequency[num] += 1
-
-    # Display the frequency of each regular number.
-    print('Frequencies of the regular numbers')
-    print('----------------------------------')
-    for i in range(1, len(reg_frequency)):
-        print(f'{i} was chosen {reg_frequency[i]} times.')
-
-    # Display the frequency of each PowerBall number.
-    print('\nFrequencies of the PowerBall numbers')
-    print('----------------------------------')
-    for i in range(1, len(pb_frequency)):
-        print(f'{i} was chosen {pb_frequency[i]} times.')
-
-# The get_numbers function returns a 2-dimensional list with
-# two elements. The first element is a list of the regular lottery
-# numbers, and the 2nd element is a list of the PowerBall numbers.
-def get_numbers():
-    # Open the lottery number file.
-    with open('pbnumbers.txt', 'r') as pblottery_file:
-        # Read the file contents into a list.
-        work_list = pblottery_file.readlines()
-
-    # Strip the newline from each element.
-    for i in range(len(work_list)):
-        work_list[i] = work_list[i].rstrip('\n')
-
-    # Split each element into individual numbers, and store the
-    # individual regular numbers in a list named lotto_nums, and
-    # the individual PowerBall numbers in a list named pb_numbers.
-    lotto_nums = []
-    pb_numbers = []
-    for i in range(len(work_list)):
-        number_set = work_list[i].split()
-        for j in range(len(number_set) - 1):
-            lotto_nums.append(int(number_set[j]))
-        pb_numbers.append(int(number_set[len(number_set)-1]))
-
-    pblottery = [[],[]]
-    pblottery[0] = lotto_nums
-    pblottery[1] = pb_numbers
-    
-    # Return the pblottery list.
-    return pblottery
-
-# Cal the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise: Frequency of Each Lottery Number
+#
+# Task: Write a program that analyzes lottery numbers and displays frequency of each number.
+#
+# Requirements:
+# 1. Create a main function that handles file reading and frequency analysis
+# 2. Create a get_numbers function that reads and processes lottery data
+# 3. Read lottery numbers from 'pbnumbers.txt' file
+# 4. Calculate frequency of each regular number (1-69) and PowerBall number (1-26)
+# 5. Display frequency of each number
+#
+# Functions:
+# - main(): handles file operations and frequency analysis
+# - get_numbers(): reads and processes lottery data from file
+#
+# Constants:
+# - LOTTERY_NUMBERS = 69 (regular numbers)
+# - POWERBALL_NUMBERS = 26 (PowerBall numbers)
+#
+# Logic:
+# - Call get_numbers() to get lottery data
+# - Create frequency arrays for regular and PowerBall numbers
+# - Process regular numbers:
+#   - Use for loop to iterate through regular numbers
+#   - Increment frequency array for each number
+# - Process PowerBall numbers:
+#   - Use for loop to iterate through PowerBall numbers
+#   - Increment frequency array for each number
+# - Display frequency of each regular number (1-69)
+# - Display frequency of each PowerBall number (1-26)
+#
+# Data Format:
+# - Each line: 5 regular numbers + 1 PowerBall number (e.g., "1 15 23 45 67 12")
+#
+# File Operations:
+# - with open('pbnumbers.txt', 'r') as pblottery_file: - opens file for reading
+# - pblottery_file.readlines() - reads all lines into list
+# - line.rstrip('\n') - removes newline characters
+#
+# String Operations:
+# - line.split() - splits line into individual numbers
+# - int() conversion - converts strings to integers
+#
+# Example:
+# Frequencies of the regular numbers
+# ----------------------------------
+# 1 was chosen 15 times.
+# 2 was chosen 12 times.
+# ... (continues for numbers 1-69)
+#
+# Frequencies of the PowerBall numbers
+# -----------------------------------
+# 1 was chosen 8 times.
+# 2 was chosen 10 times.
+# ... (continues for numbers 1-26)
+#
+# Note: 
+# - Program assumes 'pbnumbers.txt' exists with proper format
+# - Uses with statement for automatic file closing
+# - Tracks frequency of each number separately
+# - Displays results in organized format
+# - Handles both regular and PowerBall numbers

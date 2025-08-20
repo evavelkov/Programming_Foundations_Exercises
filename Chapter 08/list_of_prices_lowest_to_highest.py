@@ -1,72 +1,54 @@
-# The get_price function accepts a string that is assumed to be
-# in the format MM-DD-YYYY:Price. It returns the Price component
-# as a float.
-def get_price(str):
-    # Split the string at the colon.
-    items = str.split(':')
-    # Return the price, as a float.
-    return float(items[1])
-
-# The get_date function accepts a string that is assumed to be
-# in the format MM-DD-YYYY:Price. It returns the MM-DD-YYYY
-# component as a string.
-def get_date(str):
-    # Split the string at the colon.
-    items = str.split(':')
-    # Return the date, as a string.
-    return str(items[0])
-
-# The lowest_element_position function returns the position of the
-# element in g_list with the lowest value.
-def lowest_element_position(g_list):
-    lowest = get_price(g_list[0])
-    position = 0
-    for i in range(1, len(g_list)):
-        if get_price(g_list[i]) < lowest:
-            lowest = get_price(g_list[i])
-            position = i
-
-    # Return the position of the lowest value.
-    return position
-
-# The create_low_to_high_file function creates a file named
-# low_to_high.txt containing the elements of gas_list
-# sorted from the lowest price to the highest price.
-def create_low_to_high_file(gas_list):
-    # Make a copy of gas_list.
-    temp_list = []
-    for e in gas_list:
-        temp_list.append(e)
-    
-    # Open a file for writing.
-    outputfile = open('low_to_high.txt', 'w')
-
-    while (len(temp_list) > 0):
-        # Get the index of the element with the lowest price.
-        lowest_index = lowest_element_position(temp_list)
-
-        # Get that element.
-        lowest_line = temp_list[lowest_index]
-
-        # Write that element to the file.
-        outputfile.write(lowest_line)
-
-        # Delete that element from the list.
-        del temp_list[lowest_index]
-
-    # Close the file.
-    outputfile.close()
-
-def main():
-    # Open the file.
-    with open('GasPrices.txt', 'r') as gas_file:
-        # Read the file's contents into a list.
-        gas_list = gas_file.readlines()
-
-        # Create the file with the elements sorted
-        # by price from lowest to highest.
-        create_low_to_high_file(gas_list)
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise: List of Prices Lowest to Highest Gas Analysis
+#
+# Task: Write a program that sorts gas prices from lowest to highest and creates a file.
+#
+# Requirements:
+# 1. Create multiple functions to extract and sort gas price data
+# 2. Create a main function that handles file reading and sorting
+# 3. Read gas price data from 'GasPrices.txt' file
+# 4. Sort prices from lowest to highest
+# 5. Create 'low_to_high.txt' file with sorted data
+# 6. Handle data in MM-DD-YYYY:Price format
+#
+# Functions:
+# - get_price(str): extracts price from MM-DD-YYYY:Price format
+# - get_date(str): extracts date from MM-DD-YYYY:Price format
+# - lowest_element_position(g_list): finds position of lowest price in list
+# - create_low_to_high_file(gas_list): creates sorted file from lowest to highest
+# - main(): handles file operations and calls sorting function
+#
+# Logic:
+# - Open 'GasPrices.txt' file using with statement
+# - Read all lines into a list
+# - Call create_low_to_high_file function
+# - In create_low_to_high_file:
+#   - Make copy of gas list
+#   - Open 'low_to_high.txt' file for writing
+#   - Use while loop while temp list has elements:
+#     - Find position of lowest price using lowest_element_position
+#     - Write lowest element to file
+#     - Remove lowest element from temp list
+#   - Close output file
+#
+# Data Format:
+# - Each line: MM-DD-YYYY:Price (e.g., "01-15-2020:2.45")
+#
+# File Operations:
+# - with open('GasPrices.txt', 'r') as gas_file: - opens input file for reading
+# - open('low_to_high.txt', 'w') - opens output file for writing
+# - outputfile.write() - writes data to output file
+# - outputfile.close() - closes output file
+#
+# String Operations:
+# - str.split(':') - split at colon to separate date and price
+# - float() conversion - convert price to float
+#
+# Example:
+# (Creates low_to_high.txt file with prices sorted from lowest to highest)
+#
+# Note: 
+# - Program assumes 'GasPrices.txt' exists with proper format
+# - Uses with statement for input file
+# - Manually opens and closes output file
+# - Uses selection sort algorithm to find lowest prices
+# - Creates new file with sorted data

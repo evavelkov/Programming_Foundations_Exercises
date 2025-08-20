@@ -1,57 +1,47 @@
-# Programming Exercise 8-9
-
-def main():
-    # Local variables
-    vowels = 0
-    consonants = 0
-
-    # Get the string as input from the user.
-    user_string = input('Enter a string: ')
-
-    # Call the vowel_counter function,
-    # storing the result.
-    vowels = vowel_counter(user_string)
-    
-    # Call the consonant_counter function,
-    # storing the result.
-    consonants = consonant_counter(user_string)
-
-    # Display the results.
-    print(f'The string you entered includes {vowels} '
-          f'vowels and {consonants} consonants.')
-
-# The vowel_counter method receives a string and
-# returns the number of vowels in the string.
-def vowel_counter(string):
-    # Set up local variables
-    count = 0
-    vowels = 'aeiou'
-
-    # For each character,
-    # determine if it is a vowel.
-    for ch in string:
-        if vowels.find(ch) >= 0:
-            count = count + 1
-
-    # Return the number of vowels in the string.
-    return count
-        
-# The consonant_counter method receives a string and
-# returns the number of consonants in the string.
-def consonant_counter(string):
-    # Set up local variables
-    count = 0
-    consonants = 'bcdfghjklmnpqrstvwxyz'
-
-    # For each character,
-    # determine if it is a consonant.
-    for ch in string:
-        if consonants.find(ch) >= 0:
-            count = count + 1
-
-    # Return the number of consonants in the string.
-    return count
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise 8-9: Vowel and Consonant Counter
+#
+# Task: Write a program that counts vowels and consonants in a string.
+#
+# Requirements:
+# 1. Create a main function that handles user input and calls counting functions
+# 2. Create a vowel_counter function that counts vowels in a string
+# 3. Create a consonant_counter function that counts consonants in a string
+# 4. Get a string from user input
+# 5. Display the counts of vowels and consonants
+#
+# Functions:
+# - main(): handles user input and displays results
+# - vowel_counter(string): counts vowels in string
+# - consonant_counter(string): counts consonants in string
+#
+# Logic:
+# - Get string from user input
+# - Call vowel_counter function and store result
+# - Call consonant_counter function and store result
+# - Display both counts
+# - In vowel_counter function:
+#   - Define vowels string: 'aeiou'
+#   - Use for loop to iterate through each character
+#   - Use find() method to check if character is a vowel
+#   - Count vowels and return total
+# - In consonant_counter function:
+#   - Define consonants string: 'bcdfghjklmnpqrstvwxyz'
+#   - Use for loop to iterate through each character
+#   - Use find() method to check if character is a consonant
+#   - Count consonants and return total
+#
+# String Operations:
+# - for ch in string: - iterate through characters
+# - vowels.find(ch) - check if character is in vowels string
+# - consonants.find(ch) - check if character is in consonants string
+#
+# Example:
+# Enter a string: Hello World
+# The string you entered includes 3 vowels and 7 consonants.
+#
+# Note: 
+# - Program counts only alphabetic characters
+# - Ignores spaces, punctuation, and numbers
+# - Uses find() method to check character membership
+# - Handles both uppercase and lowercase letters
+# - Assumes input contains only letters, spaces, and punctuation

@@ -1,71 +1,51 @@
-# The get_price function accepts a string that is assumed to be
-# in the format MM-DD-YYYY:Price. It returns the Price component
-# as a float.
-def get_price(str):
-    # Split the string at the colon.
-    items = str.split(':')
-    # Return the price, as a float.
-    return float(items[1])
-
-# The get_month function accepts a string that is assumed to be
-# in the format MM-DD-YYYY:Price. It returns the MM component
-# as an int.
-def get_month(str):
-    # Split the string at the hyphens.
-    items = str.split('-')
-    # Return the month, as an int.
-    return int(items[0])
-
-# The get_year function accepts a string that is assumed to be
-# in the format MM-DD-YYYY:Price. It returns the YYYY component
-# as an int.
-def get_year(str):
-    # Split the string at the colon.
-    items = str.split(':')
-    # Split the date item at the hyphens.
-    date_items = items[0].split('-')
-    # Return the year, as an int.
-    return int(date_items[2])
-
-# The display_monthly_averages function steps through the gas_list
-# list, calculating and displaying the average price for each month.
-def display_monthly_averages(gas_list):
-    month_names = ['January', 'February', 'March', 'April', 'May',
-                   'June', 'July', 'August', 'September', 'October',
-                   'November', 'December']
-    current_month = get_month(gas_list[0])
-    current_year = get_year(gas_list[0])
-    total = 0
-    count = 0
-    average = 0
-
-    # Step through the list.
-    for e in gas_list:
-        if (get_month(e) == current_month) and (get_year(e) == current_year):
-            total += get_price(e)
-            count += 1
-        else:
-            average = total / count
-            print(f'Average price for {month_names[current_month-1]}, {current_year}: $'
-                  f'{average:,.2f}')
-            current_month = get_month(e)
-            current_year = get_year(e)
-            total = 0
-            count = 0
-
-    # Display the average for the last month.
-    print(f'Average price for {month_names[current_month-1]}, {current_year}: $'
-          f'{average:,.2f}')
-
-def main():
-    # Open the file.
-    with open('GasPrices.txt', 'r') as gas_file:
-        # Read the file's contents into a list.
-        gas_list = gas_file.readlines()
-
-        # Display the monthly average prices.
-        display_monthly_averages(gas_list)
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise: Average Price Per Month Gas Analysis
+#
+# Task: Write a program that analyzes gas prices and calculates monthly averages.
+#
+# Requirements:
+# 1. Create multiple functions to extract data from gas price records
+# 2. Create a main function that handles file reading and analysis
+# 3. Read gas price data from 'GasPrices.txt' file
+# 4. Calculate and display average prices for each month
+# 5. Handle data in MM-DD-YYYY:Price format
+#
+# Functions:
+# - get_price(str): extracts price from MM-DD-YYYY:Price format
+# - get_month(str): extracts month from MM-DD-YYYY:Price format
+# - get_year(str): extracts year from MM-DD-YYYY:Price format
+# - display_monthly_averages(gas_list): calculates and displays monthly averages
+# - main(): handles file operations and calls analysis function
+#
+# Logic:
+# - Open 'GasPrices.txt' file using with statement
+# - Read all lines into a list
+# - Call display_monthly_averages function
+# - In display_monthly_averages:
+#   - Create list of month names
+#   - Initialize variables for current month, year, total, count
+#   - Use for loop to process each gas price record
+#   - Check if record is for same month and year
+#   - If same month/year: add price to total, increment count
+#   - If different month/year: calculate and display average, reset counters
+#   - Display average for last month
+#
+# Data Format:
+# - Each line: MM-DD-YYYY:Price (e.g., "01-15-2020:2.45")
+#
+# String Operations:
+# - str.split(':') - split at colon to separate date and price
+# - str.split('-') - split date at hyphens
+# - float() conversion - convert price to float
+# - int() conversion - convert month/year to integer
+#
+# Example:
+# Average price for January, 2020: $2.45
+# Average price for February, 2020: $2.67
+# ... (continues for all months)
+#
+# Note: 
+# - Program assumes 'GasPrices.txt' exists with proper format
+# - Uses with statement for automatic file closing
+# - Handles multiple years of data
+# - Calculates arithmetic mean for each month
+# - Displays results with proper formatting

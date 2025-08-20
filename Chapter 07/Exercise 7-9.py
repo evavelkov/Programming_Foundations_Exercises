@@ -1,76 +1,59 @@
-# Programming Exercise 7-9
-
-# The program assumes that all population changes are positive.
-# That is, that each year the population was larger than the
-# previous year.
-
-def main():
-
-    # Setup variables
-    yearly_change = []
-    change = 0.0
-    total_change = 0.0
-    average_change = 0.0
-    greatest_increase = 0.0
-    smallest_increase = 0.0
-    greatest_year = 0
-    smallest_year = 0
-
-    # Constant for the base year
-    BASE_YEAR = 1950
-    
-    try:
-        # Open the file for reading.
-        with open('USPopulation.txt', 'r') as input_file:
-            # Read all the lines in the file into a list.
-            yearly_population = input_file.readlines()
-        
-        # Turn all read strings into numbers.
-        for i in range(len(yearly_population)):
-            yearly_population[i] = float(yearly_population[i])
-
-        # Calculate the change in population size for each two years.
-        for i in range(1, len(yearly_population)):
-            change = yearly_population[i] - yearly_population[i-1]
-            yearly_change.append(change)
-
-            # If this is the first year, set trackers to its value.
-            if i==1:
-                greatest_increase = change
-                smallest_increase = change
-                greatest_year = 1
-                smallest_year = 1
-
-            # This is not the first change in population size.
-            # Update trackers if relevant.
-            else:
-                if change > greatest_increase:
-                    greatest_increase = change
-                    greatest_year = i
-                    
-                elif change < smallest_increase:
-                    smallest_increase = change
-                    smallest_year = i
-
-        total_change = float(sum(yearly_change))
-        average_change = total_change / len(yearly_change)
-
-        print(f'The average annual change in population '
-              f'during the time period is {average_change:,.2f}')
-        print(f'The year with the greatest increase in population was '
-              f'{BASE_YEAR + greatest_year}')
-        print(f'The year with the smallest increase in population was '
-              f'{BASE_YEAR + smallest_year}')
-        
-    except FileNotFoundError:
-        print('The file could not be found.')
-    except IOError:
-        print('There was an IO error.')
-    except IndexError:
-        print('There was an indexing error.')
-    except:
-        print('An error occurred.')
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise 7-9: Population Change Analysis
+#
+# Task: Write a program that analyzes population changes from yearly data in a file.
+#
+# Requirements:
+# 1. Create a main function that handles file reading and population analysis
+# 2. Read population data from 'USPopulation.txt' file
+# 3. Calculate yearly population changes
+# 4. Find average annual change
+# 5. Find years with greatest and smallest increases
+# 6. Display analysis results
+# 7. Implement comprehensive exception handling
+#
+# Functions:
+# - main(): handles file operations, calculations, and display
+#
+# Logic:
+# - Define BASE_YEAR constant (1950)
+# - Use try-except block for error handling
+# - Open 'USPopulation.txt' file using with statement
+# - Read all lines and convert to float numbers
+# - Calculate yearly changes (current year - previous year)
+# - Track greatest and smallest increases with corresponding years
+# - Calculate total and average changes
+# - Display results with proper formatting
+#
+# File Operations:
+# - with open('USPopulation.txt', 'r') as input_file: - opens file for reading
+# - input_file.readlines() - reads all lines into list
+# - float() conversion - converts strings to numbers
+#
+# Calculations:
+# - Yearly change = current population - previous population
+# - Total change = sum of all yearly changes
+# - Average change = total change / number of changes
+# - Year with greatest increase = BASE_YEAR + year index
+# - Year with smallest increase = BASE_YEAR + year index
+#
+# Exception Handling:
+# - FileNotFoundError: 'The file could not be found.'
+# - IOError: 'There was an IO error.'
+# - IndexError: 'There was an indexing error.'
+# - General exception: 'An error occurred.'
+#
+# Output Format:
+# - Average annual change with comma formatting and 2 decimal places
+# - Year with greatest increase
+# - Year with smallest increase
+#
+# Example:
+# The average annual change in population during the time period is 2,443.75
+# The year with the greatest increase in population was 1955
+# The year with the smallest increase in population was 1957
+#
+# Note: 
+# - Program assumes 'USPopulation.txt' exists with one population per line
+# - Assumes all population changes are positive (increasing)
+# - Uses BASE_YEAR constant for year calculations
+# - Implements comprehensive error handling

@@ -1,53 +1,52 @@
-# Programming Exercise 8-1
-
-# Part 2
-
-# Encryption and decryption are inverse of one another
-CODE = {'A':')','a':'0','B':'(','b':'9','C':'*','c':'8',\
-        'D':'&','d':'7','E':'^','e':'6','F':'%','f':'5',\
-        'G':'$','g':'4','H':'#','h':'3','I':'@','i':'2',\
-        'J':'!','j':'1','K':'Z','k':'z','L':'Y','l':'y',\
-        'M':'X','m':'x','N':'W','n':'w','O':'V','o':'v',\
-        'P':'U','p':'u','Q':'T','q':'t','R':'S','r':'s',\
-        'S':'R','s':'r','T':'Q','t':'q','U':'P','u':'p',\
-        'V':'O','v':'o','W':'N','w':'n','X':'M','x':'m',\
-        'Y':'L','y':'l','Z':'K','z':'k','!':'J','1':'j',\
-        '@':'I','2':'i','#':'H','3':'h','$':'G','4':'g',\
-        '%':'F','5':'f','^':'E','6':'e','&':'D','7':'d',\
-        '*':'C','8':'c','(':'B','9':'b',')':'A','0':'a',\
-        ':':',',',':':','?':'.','.':'?','<':'>','>':'<',\
-        "'":'"','"':"'",'+':'-','-':'+','=':';',';':'=',\
-        '{':'[','[':'{','}':']',']':'}'}
-
-def main():
-    # Obtain a string of converted text.
-    result = convert()
-
-    # Write converted text to the screen.
-    print(result)
-
-# The convert function asks the user for a file name, opens
-# the file, and converts its contents using the CODE above.
-# It then returns a string of the converted text.
-def convert():
-    result = ''
-    text = ''
-
-    input_name = input('Enter the name of the input file: ')
-    with open(input_name, 'r') as input_file:
-        text = input_file.read()
-
-    # If character is space, it is not converted;
-    # otherwise convert.
-    for ch in text:
-
-        if ch.isspace():
-            result = result + ch
-        else:
-            result = result + CODE[ch]
-
-    return result
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise 9-3b: File Decryption Program
+#
+# Task: Write a program that decrypts text files using a substitution cipher.
+#
+# Requirements:
+# 1. Create a main function that handles file decryption and display
+# 2. Create a convert function that performs the decryption
+# 3. Define a CODE dictionary with character substitution mappings
+# 4. Get input filename from user
+# 5. Read input file and decrypt its contents
+# 6. Display decrypted text on screen
+#
+# Functions:
+# - main(): handles file operations and calls convert function
+# - convert(): reads input file and performs decryption
+#
+# Logic:
+# - Define CODE dictionary with character substitution mappings
+# - Get input filename from user
+# - Call convert() function to get decrypted text
+# - Display decrypted text on screen
+# - In convert() function:
+#   - Get input filename from user
+#   - Open and read input file
+#   - Process each character in the text
+#   - If character is whitespace: keep unchanged
+#   - If character is not whitespace: substitute using CODE dictionary
+#   - Return decrypted text string
+#
+# Decryption Rules:
+# - Uses same substitution mapping as encryption (inverse operation)
+# - Letters are substituted with their original characters
+# - Numbers are substituted with their original numbers
+# - Punctuation marks are substituted with original punctuation
+# - Whitespace characters (spaces, tabs, newlines) are preserved
+# - Each encrypted character is mapped back to its original
+#
+# File Operations:
+# - open(filename, 'r') - open file for reading
+# - file.read() - read entire file content
+# - with statement - automatic file closing
+#
+# Example:
+# Enter the name of the input file: encrypted.txt
+# (Displays decrypted text on screen)
+#
+# Note: 
+# - Program uses same substitution cipher as encryption
+# - Preserves whitespace characters
+# - Handles all printable characters
+# - Displays decrypted text instead of saving to file
+# - Uses inverse character mapping for decryption

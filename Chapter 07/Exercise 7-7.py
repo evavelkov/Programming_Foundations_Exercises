@@ -1,70 +1,63 @@
-# Programming Exercise 7-7
-
-# The program assumes that the student's solutions are listed such 
-# that each line includes the student's answer to the question, 
-# without the question number preceding the answer. The student's 
-# answers are assumed to be in the order of the questions.
-
-def main():
-    # Setup variables
-    solution = ['A', 'C', 'A', 'A', 'D',
-                'B', 'C', 'A', 'C', 'B',
-                'A', 'D', 'C', 'A', 'D',
-                'C', 'B', 'B', 'D', 'A']
-    correct_count = 0
-    incorrect_count = 0
-    incorrect_questions = []
-    counter = 0
-    
-    try:
-        # Open the file for reading.
-        with open('student_answers.txt', 'r') as input_file:
-            # Read all the lines in the file into a list.
-            student_solutions = input_file.readlines()
-            
-        # Strip trailing '\n' from all elements of the list.
-        for i in range(len(student_solutions)):
-            student_solutions[i] = student_solutions[i].rstrip('\n')
-
-        # Compare student solution to correct solution and update
-        # appropriate counters.
-        for i in range(len(student_solutions)):
-            if student_solutions[i] == solution[i]:
-                correct_count += 1
-            else:
-                incorrect_count += 1
-                incorrect_questions.append(str(i + 1))
-
-        # Determine if student passed and display result.
-        if correct_count >= 15:
-            print('Congratulations!! You passed the exam.')
-        else:
-            print('Sorry, you did not pass the exam.')
-
-        # Display exam details.
-        print(f'Number of questions you answered correctly: {correct_count}')
-        print(f'Number of questions you answered incorrectly: {incorrect_count}')
-        
-        # Determine if the student got any questions wrong.
-        if incorrect_count > 0:
-            # Display the numbers of questions that student got wrong.
-            print('Questions you answered incorrectly: ', end='')
-            while counter < incorrect_count:
-                print(incorrect_questions[counter], end='')
-                if counter + 1 < incorrect_count:
-                    print (', ', end='')
-                counter += 1
-                
-    # Handle any errors that may occur.
-    except FileNotFoundError:
-        print('The file could not be found')
-    except IOError:
-        print('There was an IO error.')
-    except IndexError:
-        print('There was an indexing error')
-    except:
-        print('An error occurred')
-
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise 7-7: Exam Grading System
+#
+# Task: Write a program that grades student exam answers against correct answers.
+#
+# Requirements:
+# 1. Create a main function that handles file reading and grading
+# 2. Define correct answers list (20 questions)
+# 3. Read student answers from 'student_answers.txt' file
+# 4. Compare student answers with correct answers
+# 5. Calculate correct and incorrect counts
+# 6. Track incorrect question numbers
+# 7. Determine pass/fail (15+ correct to pass)
+# 8. Display detailed results
+# 9. Implement comprehensive exception handling
+#
+# Functions:
+# - main(): handles file operations, grading, and display
+#
+# Logic:
+# - Define correct answers list with 20 answers
+# - Use try-except block for error handling
+# - Open 'student_answers.txt' file using with statement
+# - Read all lines and strip newline characters
+# - Compare each student answer with correct answer
+# - Count correct and incorrect answers
+# - Track question numbers for incorrect answers
+# - Determine pass/fail based on correct count
+# - Display pass/fail message
+# - Display detailed statistics
+# - Display list of incorrect questions
+#
+# File Operations:
+# - with open('student_answers.txt', 'r') as input_file: - opens file for reading
+# - input_file.readlines() - reads all lines into list
+# - line.rstrip('\n') - removes newline characters
+#
+# Grading Logic:
+# - Pass threshold: 15 or more correct answers
+# - Track incorrect question numbers (1-20)
+# - Compare answers case-sensitive
+#
+# Exception Handling:
+# - FileNotFoundError: 'The file could not be found'
+# - IOError: 'There was an IO error.'
+# - IndexError: 'There was an indexing error'
+# - General exception: 'An error occurred'
+#
+# Output Format:
+# - Pass/Fail message
+# - Number of correct/incorrect answers
+# - List of incorrect question numbers
+#
+# Example:
+# Congratulations!! You passed the exam.
+# Number of questions you answered correctly: 17
+# Number of questions you answered incorrectly: 3
+# Questions you answered incorrectly: 5, 12, 18
+#
+# Note: 
+# - Program assumes 'student_answers.txt' exists with one answer per line
+# - Answers should be in order (question 1 to 20)
+# - Uses with statement for automatic file closing
+# - Implements comprehensive error handling

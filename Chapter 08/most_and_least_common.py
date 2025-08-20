@@ -1,103 +1,63 @@
-# Named constants
-LOTTERY_NUMBERS = 69
-
-# The get_all_numbers function returns a list containing the
-# lottery numbers in pbnumbers.txt. The numbers appear in the
-# order that they were read from the file.
-def get_all_numbers():
-    # Open the lottery number file.
-    with open('pbnumbers.txt', 'r') as pblottery_file:
-        # Read the file contents into a list.
-        pblottery = pblottery_file.readlines()
-
-    # Strip the newline from each element.
-    for i in range(len(pblottery)):
-        pblottery[i] = pblottery[i].rstrip('\n')
-
-    # Split each element into individual numbers, and
-    # store the individual numbers in a list named lotto_nums.
-    lotto_nums = []
-    for i in range(len(pblottery)):
-        number_set = pblottery[i].split()
-        for j in range(len(number_set)):
-            lotto_nums.append(int(number_set[j]))
-
-    # Return the lotto_nums list.
-    return lotto_nums
-
-# The get_frequency function accepts a list of numbers and determines
-# the freqeuncy of each item in the list. The max_value parameter
-# specifies the max value that is stored in the list.
-def get_frequency(number_list, max_value):
-    # Create a list to hold each number's frequency. The list
-    # is initialized with each element set to 0.
-    frequency = [0] * (max_value + 1)
-    for i in range(len(number_list)):
-        # Get the next lottery number in the list.
-        num = number_list[i]
-
-        # Increment that number's frequency.
-        frequency[num] += 1
-
-    # Return the frequency list.
-    return frequency
-
-# The position_of_highest_value function returns the position of the
-# highest value in num_list.
-def position_of_highest_value(num_list):
-    highest = 0
-    highest_position = 0
-    for i in range(len(num_list)):
-        if num_list[i] > highest:
-            highest = num_list[i]
-            highest_position = i
-
-    return highest_position
-
-# The most_common function accepts freq_list, and returns another
-# list in which element 0 contains the position of the highest value in
-# freq_list, element 1 contains the position of the 2nd highest value in
-# freq_list, etc.
-def most_common(freq_list):
-    # Make an empty list to hold the positions of the most common items.
-    common_sorted = []
-    
-    # Make a copy of freq_list.
-    temp_list = []
-    for item in freq_list:
-        temp_list.append(item)
-
-    for i in range(len(temp_list)):
-        position = position_of_highest_value(temp_list)
-        common_sorted.append(position)
-        temp_list[position] = -1
-
-    # Return the common_sorted list.
-    return common_sorted
-
-def main():
-    # Get a list of all the lottery numbers.
-    lotto_nums = get_all_numbers()
-        
-    # Get each number's frequency.
-    frequency = get_frequency(lotto_nums, LOTTERY_NUMBERS)
-
-    # Get a list of the most common values.
-    sorted_by_most_common = most_common(frequency)
-
-    # Display the 10 most common numbers.
-    print('10 Most Common Numbers (Highest to Lowest)')
-    print ('-----------------------------------------')
-    for i in range(10):
-        print(sorted_by_most_common[i])
-
-    # Display the 10 least common numbers.
-    sorted_by_most_common.reverse()
-    print('\n10 Least Common Numbers (Lowest to Highest)')
-    print ('-----------------------------------------')
-    for i in range(1, 11):
-        print(sorted_by_most_common[i])
-    
-# Call the main function.
-if __name__ == '__main__':
-    main()
+# Programming Exercise: Most and Least Common Lottery Numbers
+#
+# Task: Write a program that analyzes lottery numbers and finds most and least common numbers.
+#
+# Requirements:
+# 1. Create multiple functions to analyze lottery number frequencies
+# 2. Create a main function that handles file reading and analysis
+# 3. Read lottery numbers from 'pbnumbers.txt' file
+# 4. Calculate frequency of each number (1-69)
+# 5. Find and display 10 most common numbers
+# 6. Find and display 10 least common numbers
+#
+# Functions:
+# - get_all_numbers(): reads and processes lottery data from file
+# - get_frequency(number_list, max_value): calculates frequency of each number
+# - position_of_highest_value(num_list): finds position of highest value in list
+# - most_common(freq_list): creates list sorted by most common to least common
+# - main(): handles file operations and calls analysis functions
+#
+# Constants:
+# - LOTTERY_NUMBERS = 69
+#
+# Logic:
+# - Call get_all_numbers() to get lottery data
+# - Call get_frequency() to calculate frequency of each number
+# - Call most_common() to get list sorted by frequency
+# - Display 10 most common numbers (highest to lowest frequency)
+# - Reverse the sorted list
+# - Display 10 least common numbers (lowest to highest frequency)
+#
+# Data Format:
+# - Each line: 6 lottery numbers (e.g., "1 15 23 45 67 12")
+#
+# File Operations:
+# - with open('pbnumbers.txt', 'r') as pblottery_file: - opens file for reading
+# - pblottery_file.readlines() - reads all lines into list
+# - line.rstrip('\n') - removes newline characters
+#
+# String Operations:
+# - line.split() - splits line into individual numbers
+# - int() conversion - converts strings to integers
+#
+# Example:
+# 10 Most Common Numbers (Highest to Lowest)
+# -----------------------------------------
+# 23
+# 45
+# 12
+# ... (continues for 10 numbers)
+#
+# 10 Least Common Numbers (Lowest to Highest)
+# -----------------------------------------
+# 67
+# 34
+# 89
+# ... (continues for 10 numbers)
+#
+# Note: 
+# - Program assumes 'pbnumbers.txt' exists with proper format
+# - Uses with statement for automatic file closing
+# - Analyzes frequency of all numbers 1-69
+# - Sorts numbers by frequency (most to least common)
+# - Displays top and bottom 10 numbers

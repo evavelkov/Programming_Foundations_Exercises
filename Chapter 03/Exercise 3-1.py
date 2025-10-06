@@ -4,8 +4,21 @@
 #
 # Requirements:
 # 1. Ask the user to enter an integer
+number = int(input("Enter an interger: "))
 # 2. Determine if the number is positive, negative, or zero
+if number > 0:
+    print("The number is positive.")
+elif number < 0:
+    print("The number is negative.")
+else:
+    print("The number number is zero.")
 # 3. Determine if the number is even or odd
+if number % 2 == 0:
+    print("your number is even.")
+else:
+    print("you number is odd.")
+
+
 # 4. Display both classifications
 #
 # Logic:

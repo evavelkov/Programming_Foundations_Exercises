@@ -1,0 +1,12 @@
+summe = 0 #summe muss irgendwie beginne sonst ist es im programm ungültig
+zahl = float(input("input zahlt ab 1: ")) #es braucht das int, weil sonst wäre es ein string. 
+                                        #etwas mit einer zahl ist immer ein int oder ein float und nicht sin string (str)
+
+while zahl <= 100:
+    summe += zahl
+    zahl += 1
+
+print(f"die summe ist {summe:.2f}")
+
+for zahl in [1, 2, 3, 4, 5]:
+    print(f"Die Zahl ist: {zahl}")

@@ -8,5 +8,5 @@ while zahl <= 100:
 
 print(f"die summe ist {summe:.2f}")
 
-for zahl in [1, 2, 3, 4, 5]:
-    print(f"Die Zahl ist: {zahl}")
+
+

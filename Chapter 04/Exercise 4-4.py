@@ -1,12 +1,19 @@
-# Programming Exercise 4-4: Distance Traveled
-#
-# Task: Write a program that calculates and displays distance traveled over time.
-#
+
+distance = 0 
+speed = 0.0
+hour = 0
 # Requirements:
 # 1. Ask the user to enter the speed of the vehicle in mph
+speed = float(input("enter the speed: "))
 # 2. Ask the user to enter the number of hours traveled
+time = int(float(input("how many hour did you drive?: ")))
 # 3. Create a table header showing "Hour" and "Distance Traveled"
+print("hour\tDistance traveled")
+print('-'*25)
 # 4. Use a for loop to calculate distance for each hour
+for hour in range(1, time+1):
+    distance = speed * hour 
+    print(hour, "\t", distance)
 # 5. Display the distance traveled for each hour in a table format
 #
 # Logic:

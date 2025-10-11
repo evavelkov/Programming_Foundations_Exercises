@@ -4,9 +4,30 @@
 #
 # Requirements:
 # 1. Ask the user to enter the number of years
+
+montnames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", 
+             "August", "September", "Oktober", "November", "Dezember"]
+#liste mit namen immer in [] setzten und mit "" und , trennen 
+totalmonth = 0
+totalrain = 0
+years = int(input("How many years: "))
 # 2. Use nested for loops to collect rainfall data:
 #    - Outer loop: iterate through each year
-#    - Inner loop: iterate through each month (12 months per year)
+for year in range(years):
+    print(f"in year {year + 1}: ")
+    for month in montnames: #wenn es aus eine Liste nimmt, braucht es kein "in range()" !
+       monthrainfall = float(input(f"enter rainfall for month {month}: ")) #month nimmt jedes "" einzeln da es in range of montnames ist
+       totalmonth += 1
+       totalrain += monthrainfall
+
+average = totalrain / totalmonth
+
+print(f"for {totalmonth} months")
+print(f"for rainfall: {totalrain:.2f} inch")
+print(f"average monthy rainfall: {average:.2f} inch")
+
+#       - Inner loop: iterate through each month (12 months per year)
+        #add to total number of months
 # 3. Ask the user to enter rainfall amount for each month
 # 4. Calculate the total rainfall for all months
 # 5. Calculate the average monthly rainfall

@@ -4,9 +4,17 @@
 #
 # Requirements:
 # 1. Initialize a constant for calories burned per minute (4.2)
+calpermin = 4.2
 # 2. Create a table header showing "Minutes" and "Calories Burned"
+minutes = 0 
+calburned = 0 
 # 3. Use a for loop to calculate calories burned for different time periods
+print("-"*40)
+print("minutes\t\tcalories burned")
 # 4. Display minutes from 10 to 30 in increments of 5
+for minutes in range(10, 31, 5):
+    calburned = calpermin * minutes
+    print(minutes, "\t\t", calburned)
 # 5. Calculate calories burned for each time period
 # 6. Display the results in a tabular format
 #

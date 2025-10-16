@@ -11,17 +11,30 @@
 #
 # Constants:
 # - KILOMETERS_TO_MILES = 0.6214
-#
+
 # Functions:
 # - main(): handles input and calls showMiles()
 # - showMiles(kilometers): performs conversion and displays result
-#
+
+KILOMETERS_TO_MILES = 0.6214
+def main():
+    mykilometers = 0 
+    mykilometers = float(input("Enter disntance in kilometers: "))
+    kmrechner(mykilometers) #ruft die nächste funktion auf und nimmt die var
+                            #welche eingegeben wurde in dieser funktion
+
+
+def kmrechner(mykilometers):
+    mymiles = 0
+    mymiles = KILOMETERS_TO_MILES * mykilometers
+    print(f"your distance in miles is {mymiles:.2f}")
+
+main() #call main
 # Logic:
 # - Get input in main function
 # - Pass kilometers to showMiles function
 # - Calculate miles = kilometers * KILOMETERS_TO_MILES
 # - Display formatted output with 2 decimal places
-#
 # Example:
 # Enter the distance in kilometers: 10
 # The conversion of 10.00 kilometers

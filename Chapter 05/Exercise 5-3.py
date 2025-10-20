@@ -11,12 +11,27 @@
 # 6. Display detailed insurance information
 #
 # Constants:
-# - REPLACE_PERCENT = 0.8 (80%)
+REPLACE_PERCENT = 0.8
 #
 # Functions:
 # - main(): handles input, calculates insurance, calls showInsure()
 # - showInsure(replace, minInsure): displays insurance details
-#
+def main(): 
+    replace = 0.0
+    minInsurance = 0.0
+    replace = float(input("Input replacement cost: "))
+
+    minInsurance = replace * REPLACE_PERCENT
+    showInsureance(replace, minInsurance)
+
+
+def showInsureance(replace, minInsurance):
+    print(f"replacement amount: ${replace:.2f}")
+    print(f"Percent insured: {REPLACE_PERCENT*100:.2f}%")
+    print(f"minimum insurance: {minInsurance:.2f}")
+
+
+main()
 # Logic:
 # - Get replacement cost from user
 # - Calculate minimum insurance = replacement cost * 0.8

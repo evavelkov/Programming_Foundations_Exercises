@@ -1,0 +1,22 @@
+BMW 3er
+SO-151413
+70.00
+verfuegbar
+VW Glof
+SO-12345
+65.00
+verfuegbar
+VW Glof
+SO-12345
+65.00
+verfuegbar
+VW Glof
+SO-12345
+65.00
+verfuegbar
+mazda miata
+BE 123456
+mazda miata
+BE-12345
+90.00
+verfuegbar

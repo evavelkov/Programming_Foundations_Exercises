@@ -1,7 +1,7 @@
 # Programming Exercise 6-1: File Reading - Display Contents
 #
 # Task: Write a program that reads and displays the entire contents of a file.
-#
+print("hello")
 # Requirements:
 # 1. Create a main function that handles file operations
 # 2. Open the 'numbers.txt' file for reading

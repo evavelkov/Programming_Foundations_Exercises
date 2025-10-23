@@ -9,5 +9,7 @@ def willkomment():
 
 def abschied():
     print("Aufwiedersehen")
+    print("was schön mit dir :) ")
 
 main()
+

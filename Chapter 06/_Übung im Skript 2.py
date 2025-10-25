@@ -13,7 +13,7 @@ def oeffne_liste_noten():
 
                 #ausdrucken für den user
                 print(f"Name: {name.rstrip('\n')}")
-                print(f"Note 1: {note1}")
+                print(f"Note 1: {note1}") #.rstrip bei float nicht möglich
                 print(f"Note 2: {note2}")
                 print(f"Note 3: {note3}")
                 print(f"Durchschnitt von {name.rstrip('\n')} ist: {durchschnitt:.2f}")

@@ -1,0 +1,12 @@
+Alice Schmidt
+M12345 
+Vertrieb
+25.50
+Bob Müller 
+M12346 
+Marketing 
+28.75
+Lea Meier
+M12347
+Kundendienst
+22.80

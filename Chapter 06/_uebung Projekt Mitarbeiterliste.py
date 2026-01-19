@@ -1,16 +1,17 @@
 def main(): 
-    with open('MAs.txt', 'r') as datei: 
-            while datei != " ": 
-                name = datei.readline().rstrip("\n")
-                pnummer = datei.readline().rstrip("\n")
-                abteilung = datei.readline().rstrip("\n")
-                stundenlohn = datei.readline().rstrip("\n")
+    with open('_MAs.txt', 'r') as datei: 
+            name = datei.readline().rstrip('\n')
 
-                print(name)
-                print(pnummer)
-                print(abteilung)
-                print(stundenlohn)
-                print("Verarbeitung abgeschlossen")
+            while name != "": 
+                    nummer = datei.readline().rstrip('\n')
+                    abteilung = datei.readline().rstrip('\n')
+                    lohn = datei.readline().rstrip('\n')
 
+                    print(f"\nName: {name}")
+                    print(f"Personalnummer: {nummer}")
+                    print(f"Abteilung: {abteilung}")
+                    print(f"Stundenlohn: {lohn}")
+
+                    name = datei.readline().rstrip('\n')
 
 main()
